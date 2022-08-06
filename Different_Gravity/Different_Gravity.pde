@@ -12,7 +12,10 @@
  * context. 
  */
 
+// PARAMATERS
 float G = 120;
+int NumberOfPlanets = 5;
+
 float LawOfMotion(float m1, float m2, float d)
 {
     return G * (m1*m2) / (d*d);
@@ -29,14 +32,14 @@ class Body
     
     Body(PVector position, PVector velocity, float mass)
     {
-        this.position     = position;
-        this.velocity     = velocity;
-        this.mass         = mass;
+        this.position = position;
+        this.velocity = velocity;
+        this.mass     = mass;
     }
     
-    void Render()
+    void Render(color c)
     {
-        noStroke();
+        fill(c);
         circle(position.x, position.y, this.mass*2);
     }
     
@@ -49,8 +52,8 @@ class Body
     
     void Attract(Body body)
     {
-        float r = dist(position.x, position.y,
-                              body.position.x, body.position.y);
+        float r = dist(position.x,      position.y,
+                       body.position.x, body.position.y);
         PVector f = position.copy().sub(body.position);
         f.setMag(LawOfMotion(mass, body.mass, r));
         body.ApplyForce(f);
@@ -73,7 +76,7 @@ void setup()
     size(1920, 1080);
     sun = new Body(new PVector(0, 0), new PVector(0, 0), 50);
     
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < NumberOfPlanets; i++)
     {
         float mass = random(5, 15);
         float radius = random(sun.mass*2, min(width/2, height/2));
@@ -84,7 +87,7 @@ void setup()
         PVector velocity = position.copy();
         
         if (random(1) < 0.5) velocity.rotate(HALF_PI);
-        else                 velocity.rotate(-HALF_PI);
+        else velocity.rotate(-HALF_PI);
 
         velocity.normalize();
         velocity.mult(sqrt((G*sun.mass)/radius));
@@ -97,15 +100,14 @@ void draw()
 {
     background(0);
     translate(width/2, height/2);
+    noStroke();
     
     for (Body planet : planets)
     {
         sun.Attract(planet);
-        fill(255);
-        planet.Render();
+        planet.Render(color(255));
         planet.Update();
     }
   
-    fill(255, 255, 0);
-    sun.Render();
+    sun.Render(color(255, 255, 0));
 }
