@@ -1,9 +1,11 @@
 # What if gravity behaved differently?
 
 Given two bodies floating in space, we can model the attraction forces between them using Newton's law of universal gravitation
+
 $$
 F=G\frac{m_1m_2}{d^2}
 $$
+
 with $G$ being the gravitational constant, $m_n$ the mass of the object and $d$ the distance between the two bodies. But this makes us think, what if gravity was different? what if $F$ was a reciprocal of $d$ not $d^2$? So I wrote this "Gravity Simulator" which allowed me to do just that. Inside the code, you will find a functoin defined as:
 
 ```java
