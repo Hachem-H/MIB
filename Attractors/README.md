@@ -21,23 +21,23 @@ The code is organized into functions, with each function corresponding to a spec
 ```processing
 void YourAttractor()
 {
-	/* your paramaters go here */
-	float a = 0.1;
-	float b = 1.5;
-	float c = 5;
-	
-	if (!ran)
-	{
-		/* your initial state goes here */
-		x = 0.1;
-		y = 0.2;
-		ran = true; // very important line
-	}
-	
-	/* differential equations right here (multiply it by dt) */
-	dx = (ay - bx)      * dt;
-	dy = (x * (z - cy)) * dt;
-	dz = (x*y - az)     * dt;
+    /* your paramaters go here */
+    float a = 0.1;
+    float b = 1.5;
+    float c = 5;
+    
+    if (!ran)
+    {
+        /* your initial state goes here */
+        x = 0.1;
+        y = 0.2;
+        ran = true; // very important line
+    }
+    
+    /* differential equations right here (multiply it by dt) */
+    dx = (ay - bx)      * dt;
+    dy = (x * (z - cy)) * dt;
+    dz = (x*y - az)     * dt;
 }
 ```
 
@@ -46,8 +46,8 @@ To use your custom attractor, simply call your function inside the `draw()` func
 ```processing
 void draw()
 {
-	YourAttractor();
-	/* ... */
+    YourAttractor();
+    /* ... */
 }
 ```
 
