@@ -125,34 +125,6 @@ void Sprott()
         *(1+e*z)+f*z*(pow(x, 3)))        * dt;
 }
 
-void FourWing()
-{
-    //
-    // FourWing
-    //
-
-    /* Paramaters */
-    float sigma = 10;
-    float rho = 28;
-    float beta = 8/3;
-    factor = 8;
-
-    if (!ran)
-    {
-        x = 0.01;
-        y = 0.01;
-        z = 0.01;
-        dt = 0.08;
-        fagtor = 110;
-        ran = true;
-    }
-
-    /* Differencial equations */
-    dx = (a*x + y*z)   * dt;
-    dy = (b*x+c*y-x*z) * dt;
-    dz = (-z-x*y)      * dt;
-}
-
 void setup()
 {
     size(1920, 1080, P3D);
